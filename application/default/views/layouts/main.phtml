@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+<head>
+	<title><?php if(APPLICATION_ENV != 'production') echo strtoupper(APPLICATION_ENV) . ' - '; ?>TÍTULO<?php if(strlen($this->title)) echo ' - ' . $this->title;?></title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=<?=$this->getEncoding();?>" />
+	<link type="image/x-icon" rel="shortcut icon" href="<?=$this->BasePath('/img/logo.png');?>" />
+    
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="<?=$this->BasePath('/css/main.css');?>" />
+    <?=$this->Css($this->css);?>
+    <!-- CSS -->
+    
+    <!-- JS -->
+    <script type="text/javascript" src="<?=$this->BasePath('/js/jquery.js');?>"></script>
+    <script type="text/javascript" src="<?=$this->BasePath('/js/main.js');?>"></script>
+    <?=$this->Js($this->js);?>
+    <!-- JS -->
+    
+</head>
+<body>
+
+<!-- CABEÇALHO -->
+<div id="header"></div>
+<!-- CABEÇALHO -->
+
+<div id="page">
+	
+    <!-- DINÂMICO -->
+    <div id="content">
+    	<?=$this->layout()->content;?>
+    </div>
+    <!-- DINÂMICO -->
+    
+</div>
+
+<!-- RODAPÉ -->
+<div id="footer"></div>
+<!-- RODAPÉ -->
+
+</body>
+</html>
