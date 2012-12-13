@@ -12,10 +12,10 @@
         </whitelist>
     </filter>
 	
-	<logging>
+	<!--logging>
 		<log type="coverage-html" target="../../docs/Tests/code-coverage" charset="UTF-8"
 		yui="true" highlight="true" lowUpperBound="50" highLowerBound="80" />
 		<log type="testdox" target="../../docs/Tests/testdox.html" />
-	</logging>
+	</logging-->
 	
 </phpunit>
