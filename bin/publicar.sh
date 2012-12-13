@@ -5,10 +5,10 @@ IPS_PHP=("")
 IPS_STC=("")
 
 #Autenticação nos servidores.
-USER=telesena
+USER=webmaster
 
 #Diretório de publicação.
-WWW=/var/www/html/telesena
+WWW=/var/www/sites/zf
 
 #Diretórios da aplicação com suas permissões.
 DIRS_PHP=("application" "library" "log" "public_html" ".version")
@@ -74,26 +74,10 @@ function config_altera()
     ORI=$APATH/public_html/.htaccess
     BKP=$TMP/ponto-htaccess
     cp -f $ORI $BKP
-    OQUE="#SetEnv APPLICATION_ENV production"
+    OQUE="SetEnv APPLICATION_ENV development"
     PQUE="SetEnv APPLICATION_ENV production"
     sed "s/$OQUE/$PQUE/g" $BKP > $ORI
     #Alterando arquivo ".htaccess".
-    
-    #Alterando arquivo "config.ini" da application "site".
-    ORI=$APATH/application/site/config.ini
-    BKP=$TMP/site-config.ini
-    cp -f $ORI $BKP
-    OQUE="201.20.8.139"
-    sed "s/$OQUE/$1/g" $BKP > $ORI
-    #Alterando arquivo "config.ini" da application "site".
-    
-    #Alterando arquivo "config.ini" da application "webservices".
-    ORI=$APATH/application/webservices/config.ini
-    BKP=$TMP/webservices-config.ini
-    cp -f $ORI $BKP
-    OQUE="201.20.8.139"
-    sed "s/$OQUE/$1/g" $BKP > $ORI
-    #Alterando arquivo "config.ini" da application "webservices".
 }
 
 ####################################################
@@ -107,28 +91,6 @@ function config_restaura()
     #Restaurando o arquivo ".htaccess".
     cp -f $TMP/ponto-htaccess $APATH/public_html/.htaccess
     rm -f $TMP/ponto-htaccess
-    
-    #Restaurando o arquivo "config.ini" da application "site".
-    cp -f $TMP/site-config.ini $APATH/application/site/config.ini
-    rm -f $TMP/site-config.ini
-
-    #Restaurando o arquivo "config.ini" da application "webservices".
-    cp -f $TMP/webservices-config.ini $APATH/application/webservices/config.ini
-    rm -f $TMP/webservices-config.ini
-}
-
-####################################################
-# LIMPA O CACHE DO SITE APÓS PUBLICADO.
-#
-# @param string $ip IP do servidor
-# @return void
-####################################################
-function limpar_cache()
-{
-    cd $TMP
-    rm -f $TMP/clear*
-    wget "http://$1/cache/clear?user=admin&pass=apc"
-    cd -
 }
 
 clear
@@ -139,7 +101,6 @@ do
     config_altera ${IPS_PHP[$i]}
     publicarPHP ${IPS_PHP[$i]}
     config_restaura
-    limpar_cache ${IPS_PHP[$i]}
     let "i = i + 1"
 done
 #Executando publicação do PHP.
