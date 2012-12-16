@@ -15,16 +15,6 @@
 require_once 'Util/Controller/Private/Abstract.php';
 
 /**
- * @see Auth_Acl
- */
-require_once 'Auth/Acl.php';
-
-/**
- * @see Auth_Plugin
- */
-require_once 'Auth/Plugin.php';
-
-/**
  * Controller base para as páginas privadas.
  *
  * @category Application
