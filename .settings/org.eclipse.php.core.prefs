@@ -1,5 +1,4 @@
-#Tue Dec 11 23:44:43 BRST 2012
 eclipse.preferences.version=1
-include_path=0;/zf
+include_path=0;/zf\u00051;/usr/share/php
 phpVersion=php5.3
 use_asp_tags_as_php=false
