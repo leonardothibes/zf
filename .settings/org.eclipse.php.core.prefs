@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-include_path=0;/zf\u00051;/usr/share/php
+include_path=0;/zf/application\u00050;/zf/library\u00050;/zf/library/Pear\u00051;/usr/share/php\u00050;/zf
 phpVersion=php5.3
 use_asp_tags_as_php=false
