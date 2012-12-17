@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="php" deleted="false" description="Util_Debug::Log();" enabled="true" name="log">Util_Debug::Log(${cursor});</template></templates>

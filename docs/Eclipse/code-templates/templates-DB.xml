@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="php" deleted="false" description="DEBUG" enabled="true" name="db">echo "&lt;pre&gt;";
+print_r(${cursor});
+echo "&lt;/pre&gt;";</template></templates>
