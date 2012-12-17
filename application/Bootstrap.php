@@ -49,7 +49,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	static public function _initControllerFront()
 	{
 		$frontController = Zend_Controller_Front::getInstance();
-		$frontController->setDefaultModule('default');
+		$frontController->setDefaultModule(self::$module);
 		
 		$directoryiterator = new DirectoryIterator(APPLICATION_PATH);
 		$request           = new Zend_Controller_Request_Http();
