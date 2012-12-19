@@ -23,14 +23,6 @@ class Default_Bootstrap
 	 */
 	static public function _initAuth()
 	{
-		//Configurando o namespace da sessão.
-		$namespace = strtoupper(Bootstrap::$module);
-		Zend_Registry::set('session_namespace', new Zend_Session_Namespace($namespace));
-		
-		$auth = Zend_Auth::getInstance();
-		$auth->setStorage(new Zend_Auth_Storage_Session($namespace));
-        //Configurando o namespace da sessão.
-        
 		//Registrando plugin de autenticação.
 		$controller = Zend_Controller_Front::getInstance();
 		$acl        = new Auth_Acl();

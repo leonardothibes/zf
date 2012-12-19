@@ -221,6 +221,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	}
 	
 	/**
+	 * Configura o namespace da sessão de acordo com o módulo.
+	 */
+	static public function _initSession()
+	{
+		//Registrando o namespace na sessão.
+		$namespace = strtoupper(self::$module);
+		Zend_Registry::set('session_namespace', new Zend_Session_Namespace($namespace));
+		
+		//Registrando o namespace na Zend_Auth.
+		$auth = Zend_Auth::getInstance();
+		$auth->setStorage(new Zend_Auth_Storage_Session($namespace));
+	}
+	
+	/**
 	 * Configura o bootstrap específico do módulo solicitado.
 	 */
 	static public function _initModule()
