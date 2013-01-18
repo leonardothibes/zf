@@ -41,6 +41,15 @@ abstract class Util_Auth_Model_Abstract implements Util_Auth_Model_Interface
 	}
 	
 	/**
+	 * Retorna uma instância do adaptador de login.
+	 * @return Zend_Auth_Adapter_Interface
+	 */
+	public function getAadapter()
+	{
+		return $this->_adapter;
+	}
+	
+	/**
 	 * Autentica login e senha.
 	 *
 	 * @param string $login
