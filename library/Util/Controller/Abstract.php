@@ -54,6 +54,7 @@ abstract class Util_Controller_Abstract extends Zend_Controller_Action
 			$this->_request->getHttpHost(),
 			$this->_request->getRequestUri()
 		);
+		Zend_Registry::set('url', $this->url);
 		
 		//iniciando classe de log.
 		$this->log = Zend_Registry::get('log');
