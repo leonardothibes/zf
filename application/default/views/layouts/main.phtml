@@ -3,7 +3,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
 <head>
-	<title><?php if(APPLICATION_ENV != 'production') echo strtoupper(APPLICATION_ENV) . ' - '; ?>TÍTULO<?php if(strlen($this->title)) echo ' - ' . $this->title;?></title>
+	<?php
+		$this->headTitle('TÍTULO');
+		if(APPLICATION_ENV != 'production') { $this->headTitle()->prepend(APPLICATION_ENV); }
+		if(strlen($this->title)) { $this->headTitle()->append($this->title); }
+		$this->headTitle()->setSeparator(' :: ');
+		echo $this->headTitle();
+	?>
     
     <meta http-equiv="Content-Type" content="text/html; charset=<?=$this->getEncoding();?>" />
 	<link type="image/x-icon" rel="shortcut icon" href="<?=$this->BasePath('/img/logo.png');?>" />
