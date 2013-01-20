@@ -1,7 +1,7 @@
 zf
 =====
 
-Projeto básico de Zend Framework 
+Projeto básico de Zend Framework.
 
 LICENSE
 =======
