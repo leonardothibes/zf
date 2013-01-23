@@ -100,7 +100,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	static public function _initLog()
 	{
 		try {
-			$dir = APPLICATION_PATH . '/../log';
+			$dir = APPLICATION_PATH . '/../data/logs';
 			if(!is_dir($dir) or !is_writable($dir)) {
 				throw new Zend_Exception('O diretório de logs não existe ou não possui permissão de escrita.');
 			}
