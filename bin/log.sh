@@ -1,9 +1,9 @@
 #!/bin/bash
 
-DATE=`date +%Y-%m-%d`
-ROOT=`dirname $0`/..
-LOG=$ROOT/log
-ME=`whoami`
+DATE=$(date +%Y-%m-%d)
+ROOT=$(dirname $0)/..
+LOG=${ROOT}/data/logs
+ME=$(whoami)
 
 if [ ! -d $LOG ]; then
     mkdir $LOG
