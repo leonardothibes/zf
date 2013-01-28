@@ -1,20 +1,24 @@
 #!/bin/bash
 
 DATE=$(date +%Y-%m-%d)
-ROOT=$(dirname $0)/..
-LOG=${ROOT}/data/logs
-SES=${ROOT}/data/sessions
+ROOT=$(dirname $0)/../data
 ME=$(whoami)
 
-if [ ! -d $LOG ]; then
-    mkdir $LOG
-fi
+# Atribuindo permissão de escrita.
+for DIR in $(ls $ROOT)
+do
+	chmod 777 ${ROOT}/${DIR}
+done
+# Atribuindo permissão de escrita.
 
-sudo chmod 777 $LOG
-sudo rm -f $LOG/*.log
+# Limpando diretório de LOGs.
+LOG=${ROOT}/logs
+chmod 777 $LOG
+rm -f $LOG/*.log
 
-sudo touch $LOG/php_$DATE.log
-sudo touch $LOG/application_$DATE.log
+touch $LOG/php_$DATE.log
+touch $LOG/application_$DATE.log
 
-sudo chown $ME $LOG/*.log
-sudo chmod 777 $LOG/*.log
+chown $ME $LOG/*.log
+chmod 777 $LOG/*.log
+# Limpando diretório de LOGs.
