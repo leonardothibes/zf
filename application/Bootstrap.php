@@ -102,7 +102,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		try {
 			$dir = APPLICATION_PATH . '/../data/logs';
 			if(!is_dir($dir) or !is_writable($dir)) {
-				throw new Zend_Exception('O diretório de logs não existe ou não possui permissão de escrita.');
+				throw new Zend_Application_Bootstrap_Exception(sprintf(
+					'O diretório de logs "%s" não existe ou não possui permissão de escrita.',
+					$dir
+				));
 			}
 			
 			//Data corrente.
@@ -225,13 +228,31 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	 */
 	static public function _initSession()
 	{
-		//Registrando o namespace na sessão.
-		$namespace = strtoupper(self::$module);
-		Zend_Registry::set('session_namespace', new Zend_Session_Namespace($namespace));
-		
-		//Registrando o namespace na Zend_Auth.
-		$auth = Zend_Auth::getInstance();
-		$auth->setStorage(new Zend_Auth_Storage_Session($namespace));
+		try {
+			$save_path = sprintf('%s/../data/sessions', APPLICATION_PATH);
+			if(!is_dir($save_path) or !is_writable($save_path)) {
+				throw new Zend_Application_Bootstrap_Exception(sprintf(
+					'O diretório de sessions "%s" não existe ou não possui permissão de escrita.',
+					$save_path
+				));
+			}
+			
+			//Alterando o save_path da sessão.
+			$options              = Zend_Session::getOptions();
+			$options['save_path'] = $save_path;
+			unset($options['auto_start']);
+			Zend_Session::start($options);
+				
+			//Registrando o namespace na sessão.
+			$namespace = strtoupper(self::$module);
+			Zend_Registry::set('session_namespace', new Zend_Session_Namespace($namespace));
+				
+			//Registrando o namespace na Zend_Auth.
+			$auth = Zend_Auth::getInstance();
+			$auth->setStorage(new Zend_Auth_Storage_Session($namespace));
+		} catch(Exception $e) {
+			die($e->getMessage());
+		}
 	}
 	
 	/**
