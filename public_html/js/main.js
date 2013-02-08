@@ -38,10 +38,16 @@ var Util =
 		$('[alt="fone"]').mask('(99) 9999-9999').css('width', '130px').attr('autocomplete', 'off');
 		
 		//Cartão de crédito(Visa e Master).
-		$('[alt="cc"]').mask('9999 9999 9999 9999').css('width', '155px').attr('autocomplete', 'off');
+		$.mask.masks = $.extend($.mask.masks, {
+			cc: { mask: '9999 9999 9999 9999' }
+		});
+		$('[alt="cc"]').css('width', '155px').attr('autocomplete', 'off').setMask();
 		
 		//Cartão de crédito American Express(Amex).
-		$('[alt="cc-amex"]').mask('9999 999999 99999').css('width', '155px').attr('autocomplete', 'off');
+		$.mask.masks = $.extend($.mask.masks, {
+			cc_amex: { mask: '9999 999999 99999' }
+		});
+		$('[alt="cc_amex"]').css('width', '155px').attr('autocomplete', 'off').setMask();
 		
 		//Data de expiração de cartão de crédito.
 		$('[alt="ce"]').mask('99/99').css('width', '45px').attr('autocomplete', 'off');
