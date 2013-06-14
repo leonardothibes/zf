@@ -1,7 +1,8 @@
 zf
 =====
 
-Projeto básico de Zend Framework.
+Um projeto básico implementado em PHP5 e Zend Framework já configurado para as minhas necessidades mais comuns, 
+e contendo as bibliotecas que mais uso no dia-a-dia.
 
 LICENSE
 =======
