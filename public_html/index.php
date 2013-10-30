@@ -21,7 +21,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path(),
 )));
 
-/** Zend_Application */
+/** Zend_Application **/
 require_once 'Zend/Application.php';
 
 //Executando o Bootstrap e rodando a aplicação.
